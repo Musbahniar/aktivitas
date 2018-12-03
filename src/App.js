@@ -22,38 +22,38 @@ class App extends Component {
     this.refs.jam.focus();
 
   }
-      removeTodo = (i) => {
-        this.state.todos.splice(i,1);
-        this.setState({ todos: this.state.todos });
-    
-        this.refs.formulir.reset();
-        this.refs.jam.focus();
-  }
+    removeTodo = (i) => {
+      this.state.todos.splice(i,1);
+      this.setState({ todos: this.state.todos });
+  
+      this.refs.formulir.reset();
+      this.refs.jam.focus();
+    }
 
   render() {
     return (
       <div className="App">
         <Header />
         <form ref="formulir" className="form-inline">
-        <input type="text" className="form-control" size="8" ref="jam" placeholder="Jam aktivitas" />
-        <input type="text" className="form-control" size="30" ref="aktivitas" placeholder="Jenis aktivitas" /> 
-        <button onClick={this.addTodo} className="btn btn-info">Simpan</button>
+            <input type="text" className="form-control" size="8" ref="jam" placeholder="Jam aktivitas" />
+            <input type="text" className="form-control" size="30" ref="aktivitas" placeholder="Jenis aktivitas" /> 
+            <button onClick={this.addTodo} className="btn btn-info">Simpan</button>
         </form>
         <hr />
         <div>
           <ul>
             <TransitionGroup>
-               { this.state.todos.map((data, i) =>
+              { this.state.todos.map((data, i) =>
               <CSSTransition
                 key={i}
                 timeout={500}
                 classNames="move" >
 
-                <li key={i}>
-                  <div className="todo-wrapper">
-                  <button onClick={ () => this.removeTodo(i)} className="btn btn-outline-danger"> Hapus </button> { data.jam } : { data.aktivitas }
-                  </div>
-                </li>
+                  <li key={i}>
+                    <div className="todo-wrapper">
+                    <button onClick={ () => this.removeTodo(i)} className="btn btn-outline-danger"> Hapus </button> { data.jam } : { data.aktivitas }
+                    </div>
+                  </li>
               </CSSTransition>
               )}
             </TransitionGroup>
